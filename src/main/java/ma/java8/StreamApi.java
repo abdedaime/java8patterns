@@ -23,6 +23,10 @@ public class StreamApi {
     numbers.stream().map((vaInteeger) ->"hello "+vaInteeger).forEach(consumer);
 
 
+    Consumer<String>    consumer1 =   getConusmer();
+    consumer1.accept("10");
+
+
     // pipeline
 
    // doSomething(numbers,myFunction);
@@ -36,6 +40,11 @@ public class StreamApi {
   public static <T, R> void doSomething(List<T> numbers, Function<T, R> strategy){
     // chaque function f le stream == Higher order function
     numbers.stream().map(strategy).forEach(System.out::println);
+  }
+
+
+  private static    Consumer<String>   getConusmer(){
+       return    (output) -> System.out.println(output);
   }
 
 
