@@ -37,6 +37,17 @@ public class Compostion {
 
     numbers.stream().map(compositeFunction()).forEach(System.out::println);
 
+    System.out.println("----Solution 4-----");
+
+    numbers.stream().map(cutomComposeFunction()).forEach(System.out::println);
+
+
+    System.out.println("----Solution 5-----");
+    Function<Integer, Integer> transFormer = composeFunction(plusOne(), multiplyTwo(),
+        minusOne());
+
+    numbers.stream().map(transFormer).forEach(System.out::println);
+
     String csvNames = names.stream().filter(s -> s.startsWith("H")).map(s -> s.toLowerCase())
         .collect(Collectors.joining(","));
 
@@ -63,13 +74,18 @@ public class Compostion {
 
   }
 
+  // composition
   private static Function<Integer, Integer> compositeFunction() {
 
     return plusOne().andThen(multiplyTwo()).andThen(minusOne());
-
   }
 
-  // composition
+
+  // composition without addthen
+    private static Function<Integer, Integer> cutomComposeFunction(){
+      return (x)-> minusOne().apply(multiplyTwo().apply(plusOne().apply(x))) ;
+    }
+
 
   private static Function<Integer, Integer> plusOne() {
     return value -> value + 1;
@@ -77,6 +93,12 @@ public class Compostion {
 
   private static Function<Integer, Integer> multiplyTwo() {
     return value -> value * 2;
+  }
+
+
+  public static  <U, T,V,K>  Function<U, K> composeFunction(Function<U, T>  f1, Function<T, V>  f2,Function<V, K>  f3){
+
+    return f1.andThen(f2).andThen(f3);
   }
 
   private static Function<Integer, Integer> minusOne() {
