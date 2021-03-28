@@ -39,7 +39,7 @@ public class Compostion {
 
     System.out.println("----Solution 4-----");
 
-    numbers.stream().map(cutomComposeFunction()).forEach(System.out::println);
+    numbers.stream().map(customComposeFunction()).forEach(System.out::println);
 
 
     System.out.println("----Solution 5-----");
@@ -82,7 +82,7 @@ public class Compostion {
 
 
   // composition without addthen
-    private static Function<Integer, Integer> cutomComposeFunction(){
+    private static Function<Integer, Integer> customComposeFunction(){
       return (x)-> minusOne().apply(multiplyTwo().apply(plusOne().apply(x))) ;
     }
 

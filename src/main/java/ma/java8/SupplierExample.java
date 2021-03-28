@@ -4,12 +4,14 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public class SupplierExample {
+ // supplier  == lazy evaluation  in java
 
+  // optionnal and method reference
 
   public static void main(String[] args) {
     System.out.println("-----------------v1--------------");
 
-    v1();
+  //  v1();
 
     System.out.println("-----------------v2--------------");
 
@@ -23,7 +25,7 @@ public class SupplierExample {
     int a = 5;
     if (a >= 5) {
       System.out.println(" v1 " + supplier.get());
-       supplier.get();
+      supplier.get();
     } else {
       System.out.println("condition 2");
 

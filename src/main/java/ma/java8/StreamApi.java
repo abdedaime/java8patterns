@@ -44,7 +44,7 @@ public class StreamApi {
 
 
   private static    Consumer<String>   getConusmer(){
-       return    (output) -> System.out.println(output);
+       return    output -> System.out.println(output);
   }
 
 
